@@ -1,5 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
+
+import { config } from 'dotenv';
+const delta = config({
+  path: ['.env.local', '.env'],
+});
+if (delta.error) {
+  console.error('Error loading config');
+}
+
 import { AppModule } from './app.module';
 
 async function bootstrap() {
